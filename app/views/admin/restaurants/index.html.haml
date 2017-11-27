@@ -1,1 +1,9 @@
-%h1 餐廳後台
+%h1 餐廳後台總覽
+%ul
+  - @restaurants.each do |restaurant|
+    %h2= restaurant.name
+    =link_to("show", admin_restaurant_path(restaurant), class: "btn btn-primary")
+    =link_to("Edit", edit_admin_restaurant_path(restaurant), class: "btn btn-primary")
+    =link_to("Delete", admin_restaurant_path(restaurant), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger")
+
+=link_to("New", new_admin_restaurant_path, class: "btn btn-primary")
