@@ -32,10 +32,16 @@
 - if flash[:notice]
   .container
     .row
-      .alert.alert-success= notice
+      .alert.alert-success.alert-dismissable{:role => "alert"}
+        %button.close{:type => "button", "data-dismiss" => "alert", "aria-lable" => "Close"}
+          %span{"aria-hidden" => "true"} x
+        = notice
 - if flash[:alert]
   .containert
     .row
-      .alert-alert-danger= alert
+      .alert.alert-danger.alert-dismissable{:role => "alert"}
+        %button.close{:type => "button", "data-dismiss" => "alert", "aria-lable" => "Close"}
+          %span{"aria-hidden" => "true"} x
+        = alert
 
 = yield
