@@ -7,8 +7,6 @@
   = csrf_meta_tags
 
 %body
-%p.notice= notice
-%p.alert= alert
 
 %nav.navbar.navbar-default
   .container-fluid
@@ -30,5 +28,14 @@
         - else
           %li= link_to("註冊", new_user_registration_path)
           %li= link_to("登入", new_user_session_path)
+
+- if flash[:notice]
+  .container
+    .row
+      .alert.alert-success= notice
+- if flash[:alert]
+  .containert
+    .row
+      .alert-alert-danger= alert
 
 = yield
