@@ -7,4 +7,5 @@
     =link_to("Delete", admin_restaurant_path(restaurant), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger")
 
 = paginate @restaurants
+%br
 =link_to("New", new_admin_restaurant_path, class: "btn btn-primary")
