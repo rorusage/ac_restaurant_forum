@@ -1,31 +1,33 @@
-- if @restaurant.errors.any?
-  %h2 We have some errors here!
-  %ul
-    - @restaurant.errors.full_messages.each do |msg|
-      %li= msg
+.container
+  .row
+    - if @restaurant.errors.any?
+      %h2 We have some errors here!
+      %ul
+        - @restaurant.errors.full_messages.each do |msg|
+          %li= msg
 
-%h1 新增餐廳
+    %h1 新增餐廳
 
-= form_for [:admin, @restaurant] do |f|
-  = f.label :name, "Name"
-  = f.text_field :name
+      = simple_form_for [:admin, @restaurant] do |f|
+        = f.label :name, "Name"
+        = f.text_field :name
 
-  = f.label :tel, "Tel"
-  = f.text_field :tel
+        = f.label :tel, "Tel"
+        = f.text_field :tel
 
-  = f.label :address, "Address"
-  = f.text_field :address
+        = f.label :address, "Address"
+        = f.text_field :address
 
-  = f.label :opening_hours, "Opening Hours"
-  = f.text_field :opening_hours
+        = f.label :opening_hours, "Opening Hours"
+        = f.text_field :opening_hours
 
-  = f.label :description, "Description"
-  = f.text_area :description
+        = f.label :description, "Description"
+        = f.text_area :description
 
-  = f.label :image, "Photo"
-  = image_tag @restaurant.image, width: '300px' if @restaurant.image?
-  = f.file_field :image
+        = f.label :image, "Photo"
+        = image_tag @restaurant.image, width: '300px' if @restaurant.image?
+        = f.file_field :image
 
-  = f.submit
+        = f.submit
 
 =link_to("Home", admin_restaurants_path)

@@ -5,6 +5,7 @@ gem 'carrierwave'
 gem 'ffaker'
 gem 'kaminari'
 gem 'bootstrap-sass', '~> 3.3.7'
+gem 'simple_form'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
