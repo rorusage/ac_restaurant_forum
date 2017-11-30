@@ -1,33 +1,19 @@
-.container
-  .row
-    - if @restaurant.errors.any?
-      %h2 We have some errors here!
-      %ul
-        - @restaurant.errors.full_messages.each do |msg|
-          %li= msg
+- if @restaurant.errors.any?
+  %h2 We have some errors here!
+  %ul
+    - @restaurant.errors.full_messages.each do |msg|
+      %li= msg
 
-    %h1 新增餐廳
+= simple_form_for [:admin, @restaurant] do |f|
+  .form-group
+    = f.input :name, input_html: {class: "form-control"}
+    = f.input :tel, input_html: {class: "form-control"}
+    = f.input :address, input_html: {class: "form-control"}
+    = f.input :opening_hours, input_html: {class: "form-control"}
+    = f.input :description, input_html: {class: "form-control"}
+    = f.input :image, type: :file
+    = image_tag @restaurant.image, width: '300px' if @restaurant.image?
+  = f.submit class: "btn btn-primary"
 
-      = simple_form_for [:admin, @restaurant] do |f|
-        = f.label :name, "Name"
-        = f.text_field :name
-
-        = f.label :tel, "Tel"
-        = f.text_field :tel
-
-        = f.label :address, "Address"
-        = f.text_field :address
-
-        = f.label :opening_hours, "Opening Hours"
-        = f.text_field :opening_hours
-
-        = f.label :description, "Description"
-        = f.text_area :description
-
-        = f.label :image, "Photo"
-        = image_tag @restaurant.image, width: '300px' if @restaurant.image?
-        = f.file_field :image
-
-        = f.submit
-
+%hr/
 =link_to("Home", admin_restaurants_path)
