@@ -2,6 +2,7 @@
   .row
     .col-md-12
       %h1= @restaurant.name
+      [#{@restaurant.category.name}]
     .col-md-4
       = image_tag @restaurant.image, class: "img-responsive center-block"
       %br/
