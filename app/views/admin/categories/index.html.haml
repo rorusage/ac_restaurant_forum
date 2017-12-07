@@ -11,6 +11,9 @@
           .form-group
             = f.text_field :name, placeholder: "Category Name", class: "form-control"
           = f.submit class: "btn btn-primary"
+          - if @category.errors.any?
+            = @category.errors.full_messages.to_sentence
+
       %br/
 
       %table.table.table-striped.table-bordered
