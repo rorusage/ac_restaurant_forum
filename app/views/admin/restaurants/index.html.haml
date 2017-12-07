@@ -1,5 +1,9 @@
 .container
   %h1 餐廳後台總覽
+  %div
+    = link_to("Restaurant", admin_restaurants_path)
+    |
+    \#{link_to("Categoryes", admin_categories_path)}
   .row
     .col-md-12
       %div

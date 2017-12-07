@@ -1,0 +1,19 @@
+.container
+  %h1 餐廳分類總表
+  %div
+    = link_to("Restaurant", admin_restaurants_path)
+    |
+    \#{link_to("Categoryes", admin_categories_path)}
+  .row
+    .col-md-12
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th #
+            %th Category Name
+        %tbody
+          - @categories.each do |category|
+            %tr
+              %th{:scope => "row"}
+                = category.id
+              %td= category.name
