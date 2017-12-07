@@ -21,9 +21,11 @@
           %tr
             %th #
             %th Category Name
+            %td #
         %tbody
           - @categories.each do |category|
             %tr
               %th{:scope => "row"}
                 = category.id
               %td= category.name
+              %td= link_to("edit", admin_categories_path(id: category.id))
