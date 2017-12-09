@@ -1,0 +1,25 @@
+.conatiner
+  .row
+    .col-md-12
+      %h1= @restaurant.name
+      [#{@restaurant.category.name}]
+    .col-md-4
+      = image_tag @restaurant.image, class: "img-responsive center-block"
+      %br/
+      .well
+        %ul.list-unstyled
+          %li
+            %strong Opening Hour:
+            = @restaurant.opening_hours
+          %li
+            %strong Tel:
+            = @restaurant.tel
+          %li
+            %strong Address:
+            = @restaurant.address
+    .col-md-8
+      =simple_format @restaurant.description
+    .clearfix
+    %hr/
+
+=link_to("Home", restaurants_path)
