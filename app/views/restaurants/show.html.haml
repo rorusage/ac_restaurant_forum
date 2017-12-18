@@ -3,6 +3,8 @@
     .col-md-12
       %h1= @restaurant.name
       [#{@restaurant.category.name}]
+.container
+  .row
     .col-md-4
       = image_tag @restaurant.image, class: "img-responsive center-block"
       %br/
@@ -22,4 +24,14 @@
     .clearfix
     %hr/
 
-=link_to("Home", restaurants_path)
+.container
+  .row
+    =simple_form_for [@restaurant, @comment] do |f|
+      .form-group
+        = f.text_area :content, placeholder: "留個言吧", class: "form-control"
+      .form-group
+        = f.submit class: "btn btn-primary"
+        = f.button :button, "Cancel", type: :reset ,class: "btn btn-default"
+
+.container
+  =link_to("Home", restaurants_path)
