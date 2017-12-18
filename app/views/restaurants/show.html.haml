@@ -26,12 +26,21 @@
 
 .container
   .row
-    =simple_form_for [@restaurant, @comment] do |f|
-      .form-group
-        = f.text_area :content, placeholder: "留個言吧", class: "form-control"
-      .form-group
-        = f.submit class: "btn btn-primary"
-        = f.button :button, "Cancel", type: :reset ,class: "btn btn-default"
+    .col-md-12
+      - @restaurant.comments.each do |comment|
+        %h4= comment.user.email.split("@")[0]
+        %p= simple_format comment.content
+        %p.text-muted
+          %em= time_ago_in_words(comment.created_at)
+          ago
+  .row
+    .col-md-12
+      =simple_form_for [@restaurant, @comment] do |f|
+        .form-group
+          = f.text_area :content, placeholder: "留個言吧", class: "form-control"
+        .form-group
+          = f.submit class: "btn btn-primary"
+          = f.button :button, "Cancel", type: :reset ,class: "btn btn-default"
 
 .container
   =link_to("Home", restaurants_path)
