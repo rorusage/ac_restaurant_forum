@@ -1,0 +1,10 @@
+.container
+  .row
+    .col-md-6
+      = image_tag @user.avatar, class: "img-responsive center-block"
+    .col-md-6
+      %h1= @user.name
+      %h5= @user.email
+      %p= @user.intro
+      if @user.email == current_user.email
+        = link_to("Edit Profile", edit_user_path(@user), class: "btn btn-primary")
