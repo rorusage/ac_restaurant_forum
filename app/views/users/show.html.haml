@@ -6,5 +6,5 @@
       %h1= @user.name
       %h5= @user.email
       %p= @user.intro
-      if @user.email == current_user.email
+      - if @user.email == current_user.email
         = link_to("Edit Profile", edit_user_path(@user), class: "btn btn-primary")
