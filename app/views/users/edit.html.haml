@@ -7,5 +7,7 @@
         .form-group
           = f.input :name, input_html: {class: "form-control"}
           = f.input :intro, input_html: {class: "form-control"}
+          = f.input :avatar, type: :file
+          = image_tag @user.avatar, width: '300px' if @user.avatar?
         = f.submit "Update", class: "btn btn-primary"
         = link_to("Cancel", user_path(@user), class: "btn btn-default")

@@ -8,3 +8,4 @@
       %p= @user.intro
       - if @user.email == current_user.email
         = link_to("Edit Profile", edit_user_path(@user), class: "btn btn-primary")
+    .clearfix
