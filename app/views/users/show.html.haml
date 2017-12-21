@@ -9,3 +9,13 @@
       - if @user.email == current_user.email
         = link_to("Edit Profile", edit_user_path(@user), class: "btn btn-primary")
     .clearfix
+  %hr/
+
+.container
+  .panel.panel-default
+    .panel-heading
+      #{@commented_restaurants.count} 家已評論餐廳
+    .panel-body
+      - @commented_restaurants.each do |restaurant|
+        %h3= link_to restaurant.name, restaurant_path(restaurant)
+
