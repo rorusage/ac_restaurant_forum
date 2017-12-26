@@ -22,3 +22,45 @@
   float: none;
   display: inline-block;
 }
+
+.my-restaurant {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%
+}
+
+.gallery {
+  border: 1px solid #ccc;
+  margin: 5px;
+}
+
+.gallery img {
+  width: auto;
+  height: 150px;
+  border-radius: 15px;
+  padding: 10px;
+  margin: auto;
+  display: block;
+}
+
+.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 700px){
+  .my-restaurant {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px){
+  .my-restaurant {
+    width: 100%;
+  }
+}
