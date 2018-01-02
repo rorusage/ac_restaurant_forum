@@ -24,43 +24,25 @@
 }
 
 .my-restaurant {
-  padding: 0 6px;
-  float: left;
-  width: 24.99999%
-}
-
-.gallery {
-  border: 1px solid #ccc;
+  display: inline-block;
+  text-align: center;
+  padding: 7px 7px 0 7px;
   margin: 5px;
 }
 
-.gallery img {
-  width: auto;
-  height: 150px;
-  border-radius: 15px;
-  padding: 10px;
-  margin: auto;
-  display: block;
+.my-restaurant > div {
+  height: 60px;
 }
 
-.desc {
-  padding: 15px;
-  text-align: center;
+.my-restaurant img{
+  max-height: 100%;
+}
+
+.panel a:hover .my-restaurant {
+  background-color: #eee;
 }
 
 * {
   box-sizing: border-box;
 }
 
-@media only screen and (max-width: 700px){
-  .my-restaurant {
-    width: 49.99999%;
-    margin: 6px 0;
-  }
-}
-
-@media only screen and (max-width: 500px){
-  .my-restaurant {
-    width: 100%;
-  }
-}

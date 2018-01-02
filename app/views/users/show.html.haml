@@ -14,15 +14,16 @@
 .container
   .panel.panel-default
     .panel-heading
-      #{@commented_restaurants.count} 家已評論餐廳
+      %strong
+        #{@commented_restaurants.count} 家已評論餐廳
     .panel-body
       - @commented_restaurants.each do |restaurant|
-        .my-restaurant
-          .gallery
-            = link_to image_tag(restaurant.image, class: "img"), restaurant_path(restaurant)
-            .desc
-              = link_to restaurant.name, restaurant_path(restaurant)
-      .clearfix
+        = link_to restaurant_path(restaurant) do
+          .my-restaurant
+            %div
+              = image_tag(restaurant.image, class: "img-responsive img-rounded")
+            %h5=restaurant.name
+
 
 
 
