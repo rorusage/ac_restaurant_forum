@@ -46,5 +46,10 @@
         %button.close{:type => "button", "data-dismiss" => "alert", "aria-lable" => "Close"}
           %span{"aria-hidden" => "true"} x
         = alert
+%ul.nav.nav-tabs
+  %li.active{:role => "presentation"}
+    =link_to("首頁", restaurants_path)
+  %li{:role => "presentation"}
+    =link_to("餐廳最新動態", feeds_restaurants_path)
 
 = yield
