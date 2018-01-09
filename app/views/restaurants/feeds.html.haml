@@ -1,20 +1,30 @@
-%h1 餐廳最新動態
+.container
+  .row
+    %ul.nav.nav-tabs
+      %li{:role => "presentation"}
+        =link_to("首頁", restaurants_path)
+      %li.active{:role => "presentation"}
+        =link_to("餐廳最新動態", feeds_restaurants_path)
+%br/
+.container
+  .row
+    %h1 餐廳最新動態
+    .col-md-6
+      %div.panel.panel-default
+        %div.panel-heading 最新餐廳
+        %div.panel-body
+          - @recent_restaurants.each do |restaurant|
+            %h4= link_to(restaurant.name, restaurant_path(restaurant))
+            %p= restaurant.category.name
+            %p= truncate(restaurant.description, lenth: 80)
+            %hr/
 
-%div.panel.panel-default
-  %div.panel-heading 最新餐廳
-  %div.panel-body
-    - @recent_restaurants.each do |restaurant|
-      %h4= link_to(restaurant.name, restaurant_path(restaurant))
-      %p= restaurant.category.name
-      %p= restaurant.description
-      %hr/
-
-%div.panel.panel-default
-  %div.panel-heading 最新評論
-  %div.panel-body
-    - @recent_comments.each do |comment|
-      %h4= link_to(comment.restaurant.name, restaurant_path(comment.restaurant))
-      %p= comment.content
-      %p by
-      =link_to(comment.user.name, user_path(comment.user))
-      %hr/
+    .col-md-6
+      %div.panel.panel-default
+        %div.panel-heading 最新評論
+        %div.panel-body
+          - @recent_comments.each do |comment|
+            %h4= link_to(comment.restaurant.name, restaurant_path(comment.restaurant))
+            %p= truncate(comment.content, length: 80)
+            %p by #{link_to(comment.user.name, user_path(comment.user))}
+            %hr/
