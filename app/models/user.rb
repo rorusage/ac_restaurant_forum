@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :restaurants, through: :comments
   mount_uploader :avatar, AvatarUploader
   validates_presence_of :name
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_restaurants, through: :favorites, source: :restaurant
 
   def admin?
     self.role == "admin"
