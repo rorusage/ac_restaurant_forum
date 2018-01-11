@@ -19,4 +19,17 @@ class RestaurantsController < ApplicationController
   def dashboard
     @restaurant = Restaurant.find(params[:id])
   end
+
+  def favorite
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.favorites.create!(user: current_user)
+    redirect_to :back
+  end
+
+  def unfavorite
+    @restaurant = Restaurant.find(params[:id])
+    favorite = Favorite.where(restaurant: @restaurant, user: current_user)
+    favorite.destroy_all
+    redirect_to :back
+  end
 end
