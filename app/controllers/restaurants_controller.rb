@@ -32,4 +32,17 @@ class RestaurantsController < ApplicationController
     favorite.destroy_all
     redirect_to :back
   end
+
+  def like
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.likes.create!(restaurant: @restaurant, user: current_user)
+    redirect_to :back
+  end
+
+  def unlike
+    @restaurant = Restaurant.find(params[:id])
+    like = Like.where(restaurant: @restaurant, user: current_user)
+    like.destroy_all
+    redirect_to :back
+  end
 end
