@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     collection do
       get :feeds
+      get :ranking
     end
 
     member do
@@ -13,7 +14,6 @@ Rails.application.routes.draw do
 
       post :like
       post :unlike
-      get :ranking
     end
   end
   resources :users, only: [:show, :edit, :update]

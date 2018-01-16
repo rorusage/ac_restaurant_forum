@@ -1,0 +1,27 @@
+.container
+  .row
+    %ul.nav.nav-tabs
+      %li{:role => "presentation"}
+        =link_to("首頁", restaurants_path)
+      %li{:role => "presentation"}
+        =link_to("餐廳最新動態", feeds_restaurants_path)
+      %li.active{:role => "presentation"}
+        =link_to("Top10人氣餐廳", ranking_restaurants_path)
+  %br/
+
+  .row
+    %h1
+      Top 10 人氣餐廳
+      %small（收藏數最高）
+    %hr/
+
+    - @restaurants.each do |restaurant|
+      = image_tag restaurant.image
+      %h3
+        = restaurant.name
+        %span 收藏數：#{restaurant.favorites_count}
+      %p= truncate(restaurant.description, length: 200)
+      = link_to("Show", restaurant_path(restaurant), class: "btn btn-primary")
+      = render partial: "shared/favorite", locals: {restaurant: restaurant}
+      %br/
+      %br/
