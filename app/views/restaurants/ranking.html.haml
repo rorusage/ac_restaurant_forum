@@ -16,12 +16,15 @@
     %hr/
 
     - @restaurants.each do |restaurant|
-      = image_tag restaurant.image
-      %h3
-        = restaurant.name
-        %span 收藏數：#{restaurant.favorites_count}
-      %p= truncate(restaurant.description, length: 200)
-      = link_to("Show", restaurant_path(restaurant), class: "btn btn-primary")
-      = render partial: "shared/favorite", locals: {restaurant: restaurant}
+      .col-md-4
+        = image_tag restaurant.image
+      .col-md-8
+        %h3
+          = restaurant.name
+          %span 收藏數：#{restaurant.favorites_count}
+        %p= truncate(restaurant.description, length: 200)
+        = link_to("Show", restaurant_path(restaurant), class: "btn btn-primary")
+        = render partial: "shared/favorite", locals: {restaurant: restaurant}
+      .clearfix
       %br/
       %br/
