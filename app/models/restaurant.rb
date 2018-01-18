@@ -17,8 +17,9 @@ class Restaurant < ActiveRecord::Base
     self.liked_users.include?(user)
   end
 
-  def count_favorites
-    self.favorites_count = self.favorites.size
-    self.save
-  end
+  # def count_favorites
+  #   self.favorites_count = self.favorites.count
+  #   puts favorites_count
+  #   self.save
+  # end
 end
