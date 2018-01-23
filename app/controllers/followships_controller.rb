@@ -9,4 +9,11 @@ class FollowshipsController < ApplicationController
       redirect_to :back
     end
   end
+
+  def destroy
+    @followship = current_user.followships.where(following_id: params[:id]).first
+    @followship.destroy
+    flash[:alert] = "Followship destroyed"
+    redirect_to :back
+  end
 end
