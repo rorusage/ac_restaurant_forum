@@ -5,6 +5,19 @@
     .col-md-6
       %h1= @user.name
       %h5= @user.email
+      %ul.list-unstyled.list-inline
+        %li
+          %strong
+            #{@commented_restaurants.count} 家已評論餐廳
+        %li
+          %strong
+            #{@favorited_restaurants.count} 家收藏餐廳
+        %li
+          %string
+            #{@followings.count} followings
+        %li
+          %string
+            #{@followers.count} followers
       %p= @user.intro
       - if @user.email == current_user.email
         = link_to("Edit Profile", edit_user_path(@user), class: "btn btn-primary")
@@ -12,19 +25,54 @@
   %hr/
 
 .container
-  .panel.panel-default
-    .panel-heading
-      %strong
-        #{@commented_restaurants.count} 家已評論餐廳
-    .panel-body
-      - @commented_restaurants.each do |restaurant|
-        = link_to restaurant_path(restaurant) do
-          .my-restaurant
-            %div
-              = image_tag(restaurant.image, class: "img-responsive img-rounded")
-            %h5=restaurant.name
+  .row
+    .col-md-4
+      .panel.panel-default
+        .panel-heading
+          %strong
+            #{@followings.count} followings
 
+        %ul.list-group
+          - @followings.each do |following|
+            %li.list-group-item
+              = link_to user_path(following) do
+                %img.img-circle{:src => "http://via.placeholder.com/30x30"}
+                %h5= following.name
 
+      .panel.panel-default
+        .panel-heading
+          %strong
+            #{@followers.count} followers
+        %ul.list-group
+          - @followers.each do |follower|
+            %li.list-group-item
+              = link_to user_path(follower) do
+                %img.img-circle{:src => "http://via.placeholder.com/128x128"}/
+                %h5= follower.name
+    .col-md-8
+      .panel.panel-default
+        .panel-heading
+          %strong
+            #{@commented_restaurants.count} 家已評論餐廳
+        .panel-body
+          - @commented_restaurants.each do |restaurant|
+            = link_to restaurant_path(restaurant) do
+              .my-restaurant
+                %div
+                  = image_tag(restaurant.image, class: "img-responsive img-rounded")
+                %h5=restaurant.name
+
+      .panel.panel-default
+        .panel-heading
+          %strong
+            #{@favorited_restaurants.count} 家收藏餐廳
+        .panel-body
+          - @favorited_restaurants.each do |restaurant|
+            = link_to restaurant_path(restaurant) do
+              .my-restaurant
+                %div
+                  = image_tag(restaurant.image, class: "img-responsive img-rounded")
+                %h5=restaurant.name
 
 
 
