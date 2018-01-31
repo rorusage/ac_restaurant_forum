@@ -29,4 +29,8 @@ class User < ActiveRecord::Base
   def following?(user)
     self.followings.include?(user)
   end
+
+  def has_this_friend?(user)
+    self.friends.include?(user)
+  end
 end

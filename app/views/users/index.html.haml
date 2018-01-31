@@ -23,3 +23,6 @@
           %img.img-rounded{:src => "http://via.placeholder.com/128x128"}/
           %h4= user.name
         = render partial: "shared/follow", locals: {user: user}
+        = render partial: "shared/friend", locals: {user: user}
+
+

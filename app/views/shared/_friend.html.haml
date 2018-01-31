@@ -1,0 +1,6 @@
+- if user != current_user
+  - if current_user.has_this_friend?(user)
+    = link_to("Not Be Friend", friendship_path(user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-link")
+  - else
+    = link_to("Be Friend", friendships_path(friend_id: user), method: :post, class: "btn btn-default")
+
