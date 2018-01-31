@@ -21,6 +21,7 @@
       %p= @user.intro
       - if @user.email == current_user.email
         = link_to("Edit Profile", edit_user_path(@user), class: "btn btn-primary")
+      = link_to("Friend list", friend_list_user_path(@user), class: "btn btn-info")
     .clearfix
   %hr/
 

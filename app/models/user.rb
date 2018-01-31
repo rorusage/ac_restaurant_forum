@@ -22,6 +22,9 @@ class User < ActiveRecord::Base
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
 
+  has_many :inverse_friends, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :who_add_me, through: :inverse_friends, source: :user
+
   def admin?
     self.role == "admin"
   end
@@ -32,5 +35,10 @@ class User < ActiveRecord::Base
 
   def has_this_friend?(user)
     self.friends.include?(user)
+  end
+
+  def all_friends
+    a = self.who_add_me + self.friends
+    a.uniq!
   end
 end
