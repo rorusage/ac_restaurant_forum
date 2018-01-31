@@ -1,2 +1,7 @@
-- @user.all_friends.each do |friend|
-  = friend.name
+.container
+  .col-md-4
+    %h1 My Friends
+    - @user.all_friends.each do |friend|
+      = link_to user_path(friend) do
+        %img.img-rounded{:src => "http://via.placeholder.com/60x60"}/
+        %h4= friend.name
