@@ -1,7 +1,9 @@
 .container
   .col-md-4
     %h1 My Friends
-    - @user.all_friends.each do |friend|
-      = link_to user_path(friend) do
-        %img.img-rounded{:src => "http://via.placeholder.com/60x60"}/
-        %h4= friend.name
+    %ul.list-group
+      - @user.all_friends.each do |friend|
+        = link_to user_path(friend) do
+          %li.list-group-item
+            %img.img-circle{:src => "http://via.placeholder.com/60x60"}/
+            %h5= friend.name
